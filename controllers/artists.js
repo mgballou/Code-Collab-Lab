@@ -5,7 +5,9 @@ module.exports = {
     create,
     index,
     show,
-    delete: destroy
+    delete: destroy,
+    edit,
+    update
 }
 
 function newArtist(req, res){
@@ -59,4 +61,31 @@ function destroy(req, res){
         console.log(err)
         res.redirect('/')
     })
+}
+
+function edit(req,res) {
+console.log('hitting edit page');
+Artist.findById(req.params.id)
+    .then(function(artist){
+        res.render('artists/edit', {artist, title: artist.name}) 
+
+    })
+.catch(function(err){
+     res.redirect('/')})
+}
+
+
+function update(req,res) {
+Artist.findById(req.params.id)
+.then(function(artist){
+    artist.name=req.body.name
+    artist.genre=req.body.genre
+    return artist.save()
+})
+.catch(function(err){
+    console.log(err)
+    res.redirect('/')})
+.finally(function(){
+    res.redirect('/')
+})
 }
