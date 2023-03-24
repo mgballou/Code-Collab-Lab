@@ -3,7 +3,8 @@ const Artist = require('../models/Artist')
 module.exports = {
     new: newArtist,
     create,
-    index
+    index,
+    show
 }
 
 function newArtist(req, res){
@@ -34,4 +35,12 @@ function index(req, res){
         res.redirect('/')
     })
     
+}
+
+function show(req, res){
+    let foundArtist
+    Artist.findById(req.params.id)
+    .then(function(artist){
+        res.render('artists/show', {artist, title: artist.name}) 
+    })
 }
