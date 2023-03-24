@@ -10,4 +10,6 @@ router.get('/:id', artistsCtrl.show)
 
 router.post('/', artistsCtrl.create)
 
+router.delete('/:id', artistsCtrl.delete)
+
 module.exports = router;

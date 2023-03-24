@@ -4,7 +4,8 @@ module.exports = {
     new: newArtist,
     create,
     index,
-    show
+    show,
+    delete: destroy
 }
 
 function newArtist(req, res){
@@ -42,5 +43,20 @@ function show(req, res){
     Artist.findById(req.params.id)
     .then(function(artist){
         res.render('artists/show', {artist, title: artist.name}) 
+    })
+}
+
+function destroy(req, res){
+    console.log('destroying Prince')
+    Artist.deleteOne({
+        _id: req.params.id
+    })
+    .then(function(results){
+    console.log(results)
+    res.redirect('/')
+    })
+    .catch(function(err){
+        console.log(err)
+        res.redirect('/')
     })
 }

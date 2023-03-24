@@ -5,6 +5,10 @@
     <div><%= artist.name%></div>
     <div>Genre</div>
     <div><%= artist.genre %></div>
+
+    <form class="delete-form" action="/artists/<%=artist._id%>?_method=DELETE" method="POST">
+        <button type="submit">Remove Artist</button></form>
+
 </section>
 
 <%- include('../partials/footer') %>
