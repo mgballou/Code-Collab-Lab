@@ -1,6 +1,15 @@
 <%- include('../partials/header', {title}) %>
 
 <p>Put in your favorite artists</p>
+<form action="/artists" method="POST" class="new-form">
+    <label>Name:
+        <input type="text" name="name" required>
+    </label>
+    <label>Genre:
+        <input type="text" name="genre">
+    </label>
+    <button type="submit">Add Artist</button>
+</form>
 
 
 <%- include('../partials/footer') %>

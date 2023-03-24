@@ -8,4 +8,6 @@ router.get('/', function (req, res, next) {
 
 router.get('/new', artistsCtrl.new)
 
+router.post('/', artistsCtrl.create)
+
 module.exports = router;
