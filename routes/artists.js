@@ -2,9 +2,7 @@ const express = require('express')
 const router = express.Router()
 const artistsCtrl = require('../controllers/artists')
 
-router.get('/', function (req, res, next) {
-    res.send('respond with a resource');
-});
+router.get('/', artistsCtrl.index)
 
 router.get('/new', artistsCtrl.new)
 

@@ -1,0 +1,34 @@
+<%- include('../partials/header', {title}) %>
+
+<table class="list">
+    <thead>
+        <tr>
+            <th>Artist</th>
+            <th>Genre</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Write the line of EJS to iterate over movies using forEach -->
+        <% artists.forEach(a => { %>
+            <tr>
+                <td>
+                    <%= a.name %>
+                </td>
+                <td>
+                    <%= a.genre %>
+                </td>
+                <td>
+                    <a class="btn-detail" href="/artists/<%=a._id%>">DETAILS</a>
+                </td>
+            </tr>
+            <!-- Close the forEach using EJS here -->
+        <% }) %>
+        
+    </tbody>
+</table>
+
+
+
+
+<%- include('../partials/footer') %>

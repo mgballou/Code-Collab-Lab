@@ -2,7 +2,8 @@ const Artist = require('../models/Artist')
 
 module.exports = {
     new: newArtist,
-    create
+    create,
+    index
 }
 
 function newArtist(req, res){
@@ -22,4 +23,15 @@ function create(req, res) {
         console.log(err)
     })
 
+}
+
+function index(req, res){
+    Artist.find({})
+    .then(function(artists){
+        res.render('artists/index', {artists, title: 'All artists'})
+    })
+    .catch(function(err){
+        res.redirect('/')
+    })
+    
 }
